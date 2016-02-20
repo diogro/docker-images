@@ -1,7 +1,7 @@
 # Copyright (c) by Diogo Melo
 # Distributed under the terms of the MIT License.
 
-FROM ubuntu-notebook
+FROM diogro/ubuntu-jupyter
 
 MAINTAINER Diogo Melo <diogro@gmail.com>
 
