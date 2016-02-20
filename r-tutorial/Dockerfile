@@ -25,7 +25,7 @@ RUN conda install --yes r-irkernel r-plyr r-devtools r-rcurl r-dplyr r-ggplot2 r
 # Clone featured notebooks before adding local content to avoid recloning
 # everytime something changes locally
 RUN mkdir -p /home/jovyan/work/Bio507
-RUN git clone --depth 1 https://github.com/diogro/dadosBioEvol /home/jovyan/work/Bio507/
+RUN git clone https://github.com/diogro/dadosBioEvol /home/jovyan/work/Bio507/
 
 USER root
 
