@@ -126,8 +126,8 @@ RUN conda config --add channels mro && \
     'r-rmarkdown=0.8*' \
     'r-reshape2=1.4*' \
 	&& conda clean -tipsy
-RUN  conda install --yes \
-    'r-igraph'
+RUN conda install --yes \
+    'r-igraph' \
     'r-rgl' \
 	'r-ape' \
     'r-matrix' \
