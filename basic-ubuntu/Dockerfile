@@ -140,6 +140,12 @@ RUN R -e 'install.packages("cowplot", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("evolqg", repos="http://cran.us.r-project.org")'
 
 # vim
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    ncurses-base \
+    && apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /opt
 RUN git clone https://github.com/vim/vim.git
 WORKDIR vim/src
