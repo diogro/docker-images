@@ -111,46 +111,33 @@ RUN apt-get update && \
     gcc && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-USER diogro
+RUN echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/apt/sources.list
+RUN gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+RUN gpg -a --export E084DAB9 | apt-key add -
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    r-base \
+    r-cran-rgl \
+    && apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # R packages
-RUN conda config --add channels mro && \
-    conda config --add channels r && \
-    conda install --yes \
-    'r-base=3.2*' \
-    'r-plyr=1.8*' \
-    'r-devtools=1.9*' \
-    'r-dplyr=0.4*' \
-    'r-ggplot2=1.0*' \
-    'r-tidyr=0.3*' \
-    'r-rmarkdown=0.8*' \
-    'r-reshape2=1.4*' \
-    && conda clean -tipsy
-RUN conda install --yes \
-    'r-igraph' \
-    'r-rgl' \
-    'r-ape' \
-    'r-matrix' \
-    'r-mvtnorm' \
-    'r-coda' \
-    'r-domc' \
-    'r-testthat' \
-    'r-lme4' \
-    && conda clean -tipsy
-
-# R packages
-# Install MCMCglmm
-RUN source activate root && R -e 'install.packages(\"MCMCglmm\", repos=\"http://cran.us.r-project.org\")'"
-#RUN ["/bin/zsh", "-c", "R -e 'install.packages(\"MCMCglmm\", repos=\"http://cran.us.r-project.org\")'"]
-
-# Install phytools dependencies
-RUN ["/bin/zsh", "-c", "R -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("Biostrings"))'"]
-RUN ["/bin/zsh", "-c", "R -e 'install.packages("phytools", repos="http://cran.us.r-project.org")'"]
-RUN ["/bin/zsh", "-c", "R -e 'install.packages("MCMCpack", repos="http://cran.us.r-project.org")'"]
-RUN ["/bin/zsh", "-c", "R -e 'install.packages("install.load", repos="http://cran.us.r-project.org")'"]
-RUN ["/bin/zsh", "-c", "R -e 'install.packages("readr", repos="http://cran.us.r-project.org")'"]
-RUN ["/bin/zsh", "-c", "R -e 'install.packages("cowplot", repos="http://cran.us.r-project.org")'"]
-RUN ["/bin/zsh", "-c", "R -e 'install.packages("evolqg", repos="http://cran.us.r-project.org")'"]
+RUN R -e 'install.packages("devtools", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("dplyr", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("tidyr", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("rmarkdown", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("igraph", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("testthat", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("lme4", repos="http://cran.us.r-project.org")'
+RUN R -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("Biostrings"))'
+RUN R -e 'install.packages("MCMCglmm", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("phytools", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("MCMCpack", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("install.load", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("readr", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("cowplot", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("evolqg", repos="http://cran.us.r-project.org")'
 
 USER root
 
