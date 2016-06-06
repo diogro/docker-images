@@ -54,6 +54,10 @@ RUN sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/too
 WORKDIR /home/$NB_USER/.spf13-vim-3
 RUN git remote add personal https://github.com/diogro/spf13-vim.git
 RUN git pull personal local:local && git checkout local && vim +BundleInstall +BundleClean +q +q
+WORKDIR /home/$NB_USER/
+RUN mkdir .config/neovim/
+WORKDIR /home/$NB_USER/.spf13-vim-3
+RUN make
 
 USER root
 
