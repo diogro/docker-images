@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 RUN apt-get update && apt-get install -yq --no-install-recommends \
     libcairo2 libgfortran3 libglib2.0-0 libjpeg8 libpango-1.0-0 libpangocairo-1.0-0 \
     libtcl8.6 libtiff5 libtk8.6 libx11-6 libxt6 \
+	libx11-dev mesa-common-dev libglu1-mesa-dev \\
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -32,8 +33,9 @@ RUN wget https://mran.revolutionanalytics.com/install/mro/3.2.5/MRO-3.2.5-Ubuntu
     dpkg -i MRO-3.2.5-Ubuntu-14.4.x86_64.deb && \
     rm MRO-3.2.5-Ubuntu-14.4.x86_64.deb
 
-# Neovim
 
+
+# Neovim
 RUN add-apt-repository ppa:neovim-ppa/unstable && \
 	apt-get update && apt-get install -yq neovim xclip xsel tmux && \
 	apt-get install -yq python-dev python-pip python3-dev python3-pip && \
@@ -71,6 +73,32 @@ RUN mkdir .config/ && mkdir .config/nvim
 WORKDIR /home/$NB_USER/.spf13-vim-3
 RUN make
 RUN vim +BundleInstall +q +q
+
+# R packages
+
+# Install MCMCglmm
+RUN R -e 'install.packages("MCMCglmm", repos="http://cran.us.r-project.org")'
+
+# Install evolqg dependencies
+RUN R -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("graph", "Rgraphviz", "Biostrings"))'
+
+RUN R -e 'install.packages("igraph", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("Matrix", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("vegan", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("ape", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("phytools", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("mvtnorm", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("coda", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("MCMCpack", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("geomorph", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("install.load", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("readr", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("lme4", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("cowplot", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("readr", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("tidyr", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("dplyr", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("evolqg", repos="http://cran.us.r-project.org")'
 
 USER root
 
