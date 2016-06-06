@@ -139,6 +139,12 @@ RUN R -e 'install.packages("readr", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("cowplot", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("evolqg", repos="http://cran.us.r-project.org")'
 
+USER diogro
+
+WORKDIR /home/$NB_USER/.oh-my-zsh
+RUN git remote add personal https://github.com/diogro/spf13-vim.git
+RUN git pull personal local:local && git checkout local
+
 USER root
 
 # Configure container startup as root
