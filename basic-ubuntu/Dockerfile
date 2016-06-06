@@ -116,7 +116,6 @@ USER diogro
 # R packages
 RUN conda config --add channels mro && \
     conda config --add channels r && \
-    conda config --add channels bioconda && \
     conda install --yes \
  	'r-base=3.2*' \
     'r-plyr=1.8*' \
