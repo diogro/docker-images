@@ -5,6 +5,7 @@ FROM krallin/ubuntu-tini:trusty
 
 MAINTAINER Diogo Melo <diogro@gmail.com>
 
+# Basic stuff
 RUN apt-get update && apt-get install -yq --no-install-recommends \
     wget \
     bzip2 \
@@ -18,6 +19,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# R dependencies
 RUN apt-get update && apt-get install -yq --no-install-recommends \
     libcairo2 libgfortran3 libglib2.0-0 libjpeg8 libpango-1.0-0 libpangocairo-1.0-0 \
     libtcl8.6 libtiff5 libtk8.6 libx11-6 libxt6 \
@@ -28,6 +30,16 @@ RUN wget https://mran.revolutionanalytics.com/install/mro/3.2.5/MRO-3.2.5-Ubuntu
     echo "f73378c5942621f8f49f7c28ce107608bfe71f808ba5bf58379437b2963b6894 MRO-3.2.5-Ubuntu-14.4.x86_64.deb" | sha256sum -c - && \
     dpkg -i MRO-3.2.5-Ubuntu-14.4.x86_64.deb && \
     rm MRO-3.2.5-Ubuntu-14.4.x86_64.deb
+
+# Neovim
+
+RUN apt-get install software-properties-common
+RUN add-apt-repository ppa:neovim-ppa/unstable && \
+	apt-get update && apt-get install -yq neovim && \
+	apt-get install -yq python-dev python-pip python3-dev python3-pip && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen
