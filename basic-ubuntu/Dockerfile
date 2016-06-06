@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     locales \
     git \
     zsh \
+    libcairo2 libgfortran3 libglib2.0-0 libjpeg8 libpango-1.0-0 libpangocairo-1.0-0 \
+    libtcl8.6 libtiff5 libtk8.6 libx11-6 libxt6 \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
