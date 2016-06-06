@@ -114,8 +114,8 @@ RUN apt-get update && \
 USER diogro
 
 # R packages
-RUN conda config --add channels mro && \
-    conda install -c mro --quiet --yes \
+RUN conda config --add channels mro
+RUN conda install -c mro --quiet --yes \
     'r-base' \
     'r-plyr=1.8*' \
     'r-devtools=1.9*' \
