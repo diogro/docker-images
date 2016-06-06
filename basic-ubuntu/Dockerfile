@@ -140,7 +140,7 @@ RUN conda install --yes \
 
 # R packages
 # Install MCMCglmm
-RUN source activate root
+RUN ["/bin/zsh", "-c", "source activate root"]
 RUN R -e 'install.packages("MCMCglmm", repos="http://cran.us.r-project.org")'
 
 # Install phytools dependencies
