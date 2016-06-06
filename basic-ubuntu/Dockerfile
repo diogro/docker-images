@@ -115,7 +115,7 @@ USER diogro
 
 # R packages
 RUN conda config --add channels mro && \
-    conda install --quiet --yes \
+    conda install -c mro --quiet --yes \
     'r-base=3.2*' \
     'r-plyr=1.8*' \
     'r-devtools=1.9*' \
