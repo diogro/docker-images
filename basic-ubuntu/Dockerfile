@@ -80,6 +80,8 @@ USER root
 # Install MCMCglmm
 RUN R -e 'install.packages("ape", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("MCMCglmm", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("httr", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("git2r", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("devtools", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("doMC", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("testthat", repos="http://cran.us.r-project.org")'
