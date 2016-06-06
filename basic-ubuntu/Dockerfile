@@ -118,15 +118,15 @@ RUN conda config --add channels mro && \
     conda config --add channels r && \
     conda config --add channels bioconda && \
     conda install --yes \
-    'r-base' \
-    'r-plyr' \
-    'r-devtools' \
-    'r-dplyr' \
-    'r-ggplot2' \
-    'r-tidyr' \
-    'r-rmarkdown' \
-    'r-reshape2' \
-    'r-rcurl' \
+ 	'r-base=3.2*' \
+    'r-irkernel=0.5*' \
+    'r-plyr=1.8*' \
+    'r-devtools=1.9*' \
+    'r-dplyr=0.4*' \
+    'r-ggplot2=1.0*' \
+    'r-tidyr=0.3*' \
+    'r-rmarkdown=0.8*' \
+    'r-reshape2=1.4*' \
     'r-rgl' \
     'r-igraph'
 	'r-ape' \
