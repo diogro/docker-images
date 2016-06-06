@@ -114,57 +114,42 @@ RUN apt-get update && \
 USER diogro
 
 # R packages
-RUN conda config --add channels r && \
+RUN conda config --add channels r mro bioconda && \
     conda install --yes \
-    'r-base=3.2*' \
-    'r-irkernel=0.5*' \
-    'r-plyr=1.8*' \
-    'r-devtools=1.9*' \
-    'r-dplyr=0.4*' \
-    'r-ggplot2=1.0*' \
-    'r-tidyr=0.3*' \
-    'r-shiny=0.12*' \
-    'r-rmarkdown=0.8*' \
-    'r-forecast=5.8*' \
-    'r-stringr=0.6*' \
-    'r-rsqlite=1.0*' \
-    'r-reshape2=1.4*' \
-    'r-nycflights13=0.1*' \
-    'r-caret=6.0*' \
-    'r-rcurl=1.95*' \
-    'r-randomforest=4.6*' && conda clean -tipsy
+    'r-base' \
+    'r-plyr' \
+    'r-devtools' \
+    'r-dplyr' \
+    'r-ggplot2' \
+    'r-tidyr' \
+    'r-rmarkdown' \
+    'r-reshape2' \
+    'r-rcurl' \
+    'r-rgl' \
+    'r-igraph'
+	'r-ape' \
+    'r-matrix' \
+	'r-mvtnorm' \
+	'r-coda' \
+	'r-vegan' \
+	'r-domc' \
+	'r-testthat' \
+	'r-readr' \
+	'r-lme4'
+&& conda clean -tipsy
 
 # R packages
 # Install MCMCglmm
-RUN R -e 'install.packages("ape", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("MCMCglmm", repos="http://cran.us.r-project.org")'
-RUN R -e 'install.packages("doMC", repos="http://cran.us.r-project.org")'
-RUN R -e 'install.packages("testthat", repos="http://cran.us.r-project.org")'
 
-# Install evolqg dependencies
-RUN R -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("graph", "Rgraphviz", "Biostrings"))'
-
-RUN R -e 'install.packages("igraph", repos="http://cran.us.r-project.org")'
-RUN R -e 'install.packages("Matrix", repos="http://cran.us.r-project.org")'
-RUN R -e 'install.packages("vegan", repos="http://cran.us.r-project.org")'
-RUN R -e 'install.packages("ape", repos="http://cran.us.r-project.org")'
+# Install phytools dependencies
+RUN R -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("Biostrings"))'
 RUN R -e 'install.packages("phytools", repos="http://cran.us.r-project.org")'
-RUN R -e 'install.packages("mvtnorm", repos="http://cran.us.r-project.org")'
-RUN R -e 'install.packages("coda", repos="http://cran.us.r-project.org")'
+
 RUN R -e 'install.packages("MCMCpack", repos="http://cran.us.r-project.org")'
 
-# rgl dependencies
-RUN apt-get update && apt-get install -yq --no-install-recommends \
-    && apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-
 RUN R -e 'install.packages("install.load", repos="http://cran.us.r-project.org")'
-RUN R -e 'install.packages("readr", repos="http://cran.us.r-project.org")'
-RUN R -e 'install.packages("lme4", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("cowplot", repos="http://cran.us.r-project.org")'
-RUN R -e 'install.packages("readr", repos="http://cran.us.r-project.org")'
-RUN R -e 'install.packages("tidyr", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("evolqg", repos="http://cran.us.r-project.org")'
 
 
