@@ -15,6 +15,7 @@ RUN apt-get update && \
     apt-get clean
 
 # neovim install
+RUN echo 'deb http://ftp.de.debian.org/debian' >> /etc/apt/sources.list
 RUN apt-get update && \
     apt-get install -y neovim zsh curl && \
     apt-get clean
