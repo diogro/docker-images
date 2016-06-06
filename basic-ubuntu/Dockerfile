@@ -100,7 +100,7 @@ RUN R -e 'install.packages("MCMCpack", repos="http://cran.us.r-project.org")'
 
 # rgl dependencies
 RUN apt-get update && apt-get install -yq --no-install-recommends \
-	libx11-dev libgl1-mesa-dev libglu1-mesa-dev x11-common \
+	libx11-dev libgl1-mesa-dev libglu1-mesa-dev build-dep r-cran-rgl \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
