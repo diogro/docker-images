@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     locales \
     git \
     zsh \
+    vim \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -31,7 +32,7 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen
 
 # Configure environment
-ENV SHELL /bin/bash
+ENV SHELL /bin/zsh
 ENV NB_USER diogro
 ENV NB_UID 1000
 ENV HOME /home/diogro
@@ -46,6 +47,8 @@ USER diogro
 
 # Setup diogro home directory
 RUN mkdir /home/$NB_USER/projects
+RUN curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+RUN sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 USER root
 
