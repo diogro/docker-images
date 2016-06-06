@@ -70,7 +70,7 @@ WORKDIR /home/$NB_USER/
 RUN mkdir .config/ && mkdir .config/nvim
 WORKDIR /home/$NB_USER/.spf13-vim-3
 RUN make
-RUN vim +BundleInstall +BundleClean +q +q
+RUN vim +BundleInstall +q +q
 
 USER root
 
