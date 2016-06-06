@@ -97,6 +97,14 @@ RUN R -e 'install.packages("phytools", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("mvtnorm", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("coda", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("MCMCpack", repos="http://cran.us.r-project.org")'
+
+# rgl dependencies
+RUN apt-get update && apt-get install -yq --no-install-recommends \
+	libx11-dev libgl1-mesa-dev libglu1-mesa-dev x11-common \
+    && apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+
 RUN R -e 'install.packages("rgl", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("geomorph", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("install.load", repos="http://cran.us.r-project.org")'
