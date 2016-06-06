@@ -13,6 +13,10 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     locales \
     git \
     zsh \
+    && apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -yq --no-install-recommends \
     libcairo2 libgfortran3 libglib2.0-0 libjpeg8 libpango-1.0-0 libpangocairo-1.0-0 \
     libtcl8.6 libtiff5 libtk8.6 libx11-6 libxt6 \
     && apt-get clean && \
@@ -36,9 +40,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
 # Create diogro user with UID=1000 and in the 'users' group
-RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER && \
-    mkdir -p /opt/conda && \
-    chown jovyan /opt/conda
+RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER 
 
 USER diogro
 
