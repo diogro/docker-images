@@ -78,6 +78,7 @@ USER root
 
 # R packages
 # Install MCMCglmm
+RUN R -e 'install.packages("ape", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("MCMCglmm", repos="http://cran.us.r-project.org")'
 
 # Install evolqg dependencies
