@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 # R dependencies
 RUN apt-get update && apt-get install -yq --no-install-recommends \
     libcairo2 libgfortran3 libglib2.0-0 libjpeg8 libpango-1.0-0 libpangocairo-1.0-0 \
-    libtcl8.6 libtiff5 libtk8.6 libx11-6 libxt6 \
+    libtcl8.6 libtiff5 libtk8.6 libx11-6 libxt6  gfortran fonts-dejavu \
 	libx11-dev mesa-common-dev libglu1-mesa-dev \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -80,6 +80,9 @@ USER root
 # Install MCMCglmm
 RUN R -e 'install.packages("ape", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("MCMCglmm", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("devtools", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("doMC", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("testthat", repos="http://cran.us.r-project.org")'
 
 # Install evolqg dependencies
 RUN R -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("graph", "Rgraphviz", "Biostrings"))'
