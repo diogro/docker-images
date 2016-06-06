@@ -48,6 +48,7 @@ USER diogro
 
 # Setup diogro home directory
 RUN mkdir /home/$NB_USER/projects
+WORKDIR /home/$NB_USER
 RUN curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 RUN sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
