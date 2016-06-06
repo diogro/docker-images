@@ -115,7 +115,7 @@ USER diogro
 
 # R packages
 RUN conda config --add channels r && \
-    conda install --quiet --yes \
+    conda install --yes \
     'r-base=3.2*' \
     'r-irkernel=0.5*' \
     'r-plyr=1.8*' \
