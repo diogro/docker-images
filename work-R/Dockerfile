@@ -12,9 +12,9 @@ USER root
 RUN apt-get update && \
     apt-get install -y libxrender1 fonts-dejavu gfortran gcc mesa-common-dev libglu1-mesa-dev libgl1-mesa-dev && \
     apt-get install -y software-properties-common && \
-    add-apt-repository ppa:neovim-ppa/unstable && \
+    add-apt-repository -y ppa:neovim-ppa/unstable && \
     apt-get update && \
-    apt-get install neovim zsh curl && \
+    apt-get install -y neovim zsh curl && \
     apt-get clean
 
 # Now switch to jovyan for all conda and other package manager installs
