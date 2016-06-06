@@ -22,8 +22,8 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     sudo \
     locales \
     zsh \
-	curl \
-	software-properties-common \
+    curl \
+    software-properties-common \
     texlive-latex-base \
     texlive-latex-extra \
     texlive-fonts-extra \
@@ -37,16 +37,16 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 RUN apt-get update && apt-get install -yq --no-install-recommends \
     libcairo2 libgfortran3 libglib2.0-0 libjpeg8 libpango-1.0-0 libpangocairo-1.0-0 \
     libtcl8.6 libtiff5 libtk8.6 libx11-6 libxt6 gfortran fonts-dejavu libblas-dev liblapack-dev\
-	libx11-dev mesa-common-dev libglu1-mesa-dev libcurl4-openssl-dev openssl \
-	libx11-dev libgl1-mesa-dev libglu1-mesa-dev \
-	libpaper-utils libpaper1 libtcl8.5 libtk8.5 tcl8.5 tk8.5 unzip xdg-utils zip ed \
+    libx11-dev mesa-common-dev libglu1-mesa-dev libcurl4-openssl-dev openssl \
+    libx11-dev libgl1-mesa-dev libglu1-mesa-dev \
+    libpaper-utils libpaper1 libtcl8.5 libtk8.5 tcl8.5 tk8.5 unzip xdg-utils zip ed \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Neovim
 RUN add-apt-repository ppa:neovim-ppa/unstable && \
-	apt-get update && apt-get install -yq neovim xclip xsel tmux && \
-	apt-get install -yq python-dev python-pip python3-dev python3-pip && \
+    apt-get update && apt-get install -yq neovim xclip xsel tmux && \
+    apt-get install -yq python-dev python-pip python3-dev python3-pip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -117,7 +117,7 @@ USER diogro
 RUN conda config --add channels mro && \
     conda config --add channels r && \
     conda install --yes \
- 	'r-base=3.2*' \
+    'r-base=3.2*' \
     'r-plyr=1.8*' \
     'r-devtools=1.9*' \
     'r-dplyr=0.4*' \
@@ -125,22 +125,22 @@ RUN conda config --add channels mro && \
     'r-tidyr=0.3*' \
     'r-rmarkdown=0.8*' \
     'r-reshape2=1.4*' \
-	&& conda clean -tipsy
+    && conda clean -tipsy
 RUN conda install --yes \
     'r-igraph' \
     'r-rgl' \
-	'r-ape' \
+    'r-ape' \
     'r-matrix' \
-	'r-mvtnorm' \
-	'r-coda' \
-	'r-domc' \
-	'r-testthat' \
-	'r-lme4' \
-	&& conda clean -tipsy
+    'r-mvtnorm' \
+    'r-coda' \
+    'r-domc' \
+    'r-testthat' \
+    'r-lme4' \
+    && conda clean -tipsy
 
 # R packages
 # Install MCMCglmm
-RUN ["/bin/zsh", "-c", "source activate root && R -e 'install.packages(\"MCMCglmm\", repos=\"http://cran.us.r-project.org\")'"]
+RUN source activate root && R -e 'install.packages(\"MCMCglmm\", repos=\"http://cran.us.r-project.org\")'"
 #RUN ["/bin/zsh", "-c", "R -e 'install.packages(\"MCMCglmm\", repos=\"http://cran.us.r-project.org\")'"]
 
 # Install phytools dependencies
@@ -152,6 +152,7 @@ RUN ["/bin/zsh", "-c", "R -e 'install.packages("readr", repos="http://cran.us.r-
 RUN ["/bin/zsh", "-c", "R -e 'install.packages("cowplot", repos="http://cran.us.r-project.org")'"]
 RUN ["/bin/zsh", "-c", "R -e 'install.packages("evolqg", repos="http://cran.us.r-project.org")'"]
 
+USER root
 
 # Configure container startup as root
 EXPOSE 8888
