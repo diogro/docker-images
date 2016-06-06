@@ -135,7 +135,6 @@ RUN conda install --yes \
 	'r-coda' \
 	'r-domc' \
 	'r-testthat' \
-	'r-readr' \
 	'r-lme4' \
 	&& conda clean -tipsy
 
@@ -150,6 +149,7 @@ RUN R -e 'install.packages("phytools", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("MCMCpack", repos="http://cran.us.r-project.org")'
 
 RUN R -e 'install.packages("install.load", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("readr", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("cowplot", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("evolqg", repos="http://cran.us.r-project.org")'
 
