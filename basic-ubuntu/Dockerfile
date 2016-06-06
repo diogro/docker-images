@@ -106,8 +106,6 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 
 
-RUN R -e 'install.packages("rgl", repos="http://cran.us.r-project.org")'
-RUN R -e 'install.packages("geomorph", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("install.load", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("readr", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("lme4", repos="http://cran.us.r-project.org")'
