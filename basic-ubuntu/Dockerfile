@@ -35,7 +35,7 @@ RUN wget https://mran.revolutionanalytics.com/install/mro/3.2.5/MRO-3.2.5-Ubuntu
 # Neovim
 
 RUN add-apt-repository ppa:neovim-ppa/unstable && \
-	apt-get update && apt-get install -yq neovim && \
+	apt-get update && apt-get install -yq neovim xclip xsel tmux && \
 	apt-get install -yq python-dev python-pip python3-dev python3-pip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
