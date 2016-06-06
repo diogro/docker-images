@@ -139,8 +139,13 @@ RUN R -e 'install.packages("readr", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("cowplot", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("evolqg", repos="http://cran.us.r-project.org")'
 
-USER diogro
+# vim
+WORKDIR /opt
+RUN git clone https://github.com/vim/vim.git
+WORKDIR vim/src
+RUN make && make install
 
+USER diogro
 
 RUN git config --global user.email "diogro@gmail.com"
 RUN git config --global user.name "Diogo Melo"
