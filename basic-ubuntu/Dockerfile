@@ -114,7 +114,9 @@ RUN apt-get update && \
 USER diogro
 
 # R packages
-RUN conda config --add channels r mro bioconda && \
+RUN conda config --add channels mro && \
+    conda config --add channels r && \
+    conda config --add channels bioconda && \
     conda install --yes \
     'r-base' \
     'r-plyr' \
@@ -135,8 +137,8 @@ RUN conda config --add channels r mro bioconda && \
 	'r-domc' \
 	'r-testthat' \
 	'r-readr' \
-	'r-lme4'
-&& conda clean -tipsy
+	'r-lme4' \
+	&& conda clean -tipsy
 
 # R packages
 # Install MCMCglmm
