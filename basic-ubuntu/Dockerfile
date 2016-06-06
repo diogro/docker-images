@@ -141,7 +141,7 @@ RUN conda install --yes \
 # R packages
 # Install MCMCglmm
 RUN ["/bin/zsh", "-c", "source activate root"]
-RUN ["/bin/zsh", "-c", "R -e 'install.packages("MCMCglmm", repos="http://cran.us.r-project.org")'"
+RUN ["/bin/zsh", "-c", "R -e 'install.packages('MCMCglmm', repos='http://cran.us.r-project.org')'"
 
 # Install phytools dependencies
 RUN ["/bin/zsh", "-c", "R -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("Biostrings"))'"
