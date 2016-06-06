@@ -74,8 +74,9 @@ WORKDIR /home/$NB_USER/.spf13-vim-3
 RUN make
 RUN vim +BundleInstall +q +q
 
-# R packages
+USER root
 
+# R packages
 # Install MCMCglmm
 RUN R -e 'install.packages("MCMCglmm", repos="http://cran.us.r-project.org")'
 
@@ -100,7 +101,6 @@ RUN R -e 'install.packages("tidyr", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("dplyr", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("evolqg", repos="http://cran.us.r-project.org")'
 
-USER root
 
 # Configure container startup as root
 EXPOSE 8888
