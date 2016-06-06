@@ -51,6 +51,9 @@ RUN mkdir /home/$NB_USER/projects
 WORKDIR /home/$NB_USER
 RUN curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 RUN sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+WORKDIR /home/$NB_USER/.spf13-vim-3
+RUN git remote add origin https://github.com/diogro/spf13-vim.git
+RUN git pull && git checkout local && vim +BundleInstall +BundleClean +q +q
 
 USER root
 
