@@ -133,7 +133,6 @@ RUN conda install --yes \
     'r-matrix' \
 	'r-mvtnorm' \
 	'r-coda' \
-	'r-vegan' \
 	'r-domc' \
 	'r-testthat' \
 	'r-readr' \
