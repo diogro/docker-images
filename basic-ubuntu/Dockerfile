@@ -119,7 +119,6 @@ RUN conda config --add channels mro && \
     conda config --add channels bioconda && \
     conda install --yes \
  	'r-base=3.2*' \
-    'r-irkernel=0.5*' \
     'r-plyr=1.8*' \
     'r-devtools=1.9*' \
     'r-dplyr=0.4*' \
@@ -127,10 +126,10 @@ RUN conda config --add channels mro && \
     'r-tidyr=0.3*' \
     'r-rmarkdown=0.8*' \
     'r-reshape2=1.4*' \
-    'r-rgl' \
 	&& conda clean -tipsy
 RUN  conda install --yes \
     'r-igraph'
+    'r-rgl' \
 	'r-ape' \
     'r-matrix' \
 	'r-mvtnorm' \
