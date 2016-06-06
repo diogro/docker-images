@@ -114,16 +114,15 @@ RUN apt-get update && \
 USER diogro
 
 # R packages
-RUN conda config --add channels mro
-RUN conda install -c mro --quiet --yes \
-    'r-base' \
+RUN conda config --add channels r && \
+    conda install --quiet --yes \
+    'r-base=3.2*' \
     'r-plyr=1.8*' \
     'r-devtools=1.9*' \
     'r-dplyr=0.4*' \
     'r-ggplot2=1.0*' \
     'r-tidyr=0.3*' \
-    'r-rmarkdown=0.8*' \
-    'r-stringr=0.6*' \
+    'r-shiny=0.12*' \
     'r-reshape2=1.4*' \
     'r-rcurl=1.95*' \
     'r-rgl' && conda clean -tipsy
