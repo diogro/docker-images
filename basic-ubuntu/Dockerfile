@@ -141,16 +141,16 @@ RUN conda install --yes \
 # R packages
 # Install MCMCglmm
 RUN ["/bin/zsh", "-c", "source activate root"]
-RUN ["/bin/zsh", "-c", "R -e 'install.packages('MCMCglmm', repos='http://cran.us.r-project.org')'"
+RUN ["/bin/zsh", "-c", "R -e 'install.packages("MCMCglmm", repos="http://cran.us.r-project.org")'"]
 
 # Install phytools dependencies
-RUN ["/bin/zsh", "-c", "R -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("Biostrings"))'"
-RUN ["/bin/zsh", "-c", "R -e 'install.packages("phytools", repos="http://cran.us.r-project.org")'"
-RUN ["/bin/zsh", "-c", "R -e 'install.packages("MCMCpack", repos="http://cran.us.r-project.org")'"
-RUN ["/bin/zsh", "-c", "R -e 'install.packages("install.load", repos="http://cran.us.r-project.org")'"
-RUN ["/bin/zsh", "-c", "R -e 'install.packages("readr", repos="http://cran.us.r-project.org")'"
-RUN ["/bin/zsh", "-c", "R -e 'install.packages("cowplot", repos="http://cran.us.r-project.org")'"
-RUN ["/bin/zsh", "-c", "R -e 'install.packages("evolqg", repos="http://cran.us.r-project.org")'"
+RUN ["/bin/zsh", "-c", "R -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("Biostrings"))'"]
+RUN ["/bin/zsh", "-c", "R -e 'install.packages("phytools", repos="http://cran.us.r-project.org")'"]
+RUN ["/bin/zsh", "-c", "R -e 'install.packages("MCMCpack", repos="http://cran.us.r-project.org")'"]
+RUN ["/bin/zsh", "-c", "R -e 'install.packages("install.load", repos="http://cran.us.r-project.org")'"]
+RUN ["/bin/zsh", "-c", "R -e 'install.packages("readr", repos="http://cran.us.r-project.org")'"]
+RUN ["/bin/zsh", "-c", "R -e 'install.packages("cowplot", repos="http://cran.us.r-project.org")'"]
+RUN ["/bin/zsh", "-c", "R -e 'install.packages("evolqg", repos="http://cran.us.r-project.org")'"]
 
 
 # Configure container startup as root
