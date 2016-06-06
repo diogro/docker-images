@@ -142,7 +142,7 @@ RUN R -e 'install.packages("evolqg", repos="http://cran.us.r-project.org")'
 # vim
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    ncurses-base \
+    libncurses5-dev \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
